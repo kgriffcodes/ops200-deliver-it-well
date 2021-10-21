@@ -37,4 +37,14 @@ describe('server/app.js', function() {
       done();
     });
   });
+
+  it('h2 says hallo welt', (done) => {
+	chai.request(server)
+	  .get('/')
+	  .end((err, res) => {
+		expect(err).not.exist;
+		expect(JSON.stringify(res.text)).to.contain('Hallo Welt');
+		done();
+	  });
+	});
 })
